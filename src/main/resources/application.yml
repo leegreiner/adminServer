@@ -48,3 +48,17 @@ server:
       request-attributes-enabled: true
       rotate: true
       suffix: .log
+      
+---
+
+spring:
+  profiles: local
+
+  boot:
+    admin:
+      notify:
+        mail:
+          enabled: false
+        ms-teams:
+          enabled: false
+  
