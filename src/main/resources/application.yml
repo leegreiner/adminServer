@@ -1,0 +1,50 @@
+spring:
+  application:
+      name: @project.name@
+      
+  boot:    admin:      notify:        mail:
+          from: Spring Boot Admin <noreply@foo.com>
+          to: lee.greiner@duke.edu
+        ms-teams:          enabled: true
+          webhook-url: https://outlook.office.com/webhook/f0b15003-7439-4717-917e-7f6d015401b2@cb72c54e-4a31-4d9e-b14a-1ea36dfac94c/IncomingWebhook/2d87da863d5e493e89b0e40d669ed417/3cb49c08-7ef1-44b4-ae25-294ab29d0d79
+          status-changed-title: Server Status Change
+          registered-title: Server Registered
+          de-registered-title: Server Deregistered
+          theme-color: FF0000
+  main:
+    banner-mode: 'off'
+  
+  mail:
+    default-encoding: UTF-8
+    host: smtpgw.duhs.duke.edu
+
+  security:
+    user:
+      name: 'admin'
+#     changeMe1
+      password: '{cipher}8595c9f67620ea4ed95370dca6c87ad9317f8bc4b035e9971b71d47a1632bd73'
+      
+server:
+  compression:
+    enabled: true
+  port: 8449
+  servlet:
+    session:
+      timeout: 60m
+  ssl:
+    ciphers: TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_256_CBC_SHA256, TLS_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+    enabled-protocols: TLSv1.2
+    enabled: true
+    key-store: classpath:keystore.p12 
+    key-store-password: '{cipher}f04a152e702ddaa5039a13cfa98fc11437803467e704a72d9edd7a7eb24b09f3'
+    key-store-type: PKCS12
+    key-alias: tomcat
+    protocol: TLS
+  tomcat:
+    basedir: /opt/apps/bootAdmin
+    accesslog:
+      directory: logs
+      enabled: true
+      request-attributes-enabled: true
+      rotate: true
+      suffix: .log
